@@ -1,0 +1,36 @@
+Sites Web de référence : https://www.atelierbulk.com/
+			 			 https://imprimeriedumarais.com/fr
+
+
+Site vitrine de présentation sans boutique en ligne, sans tarifs affichés
+
+Pages : 
+	- Contact
+	- Devis
+	- Projets
+	- Nos savoir-faire
+	- …
+
+Wordpress, from scratch, IA ?
+
+Questions : temps restant pour l'hébergement du site noire encrée 
+	    Reprendre un hébergeur et faire le site from scratch avec IA
+	    
+	    
+
+--------------------------------------------------------------------------------------
+
+Modifications Site Noire encrée : 
+- Le site n'est pas en HTTPS
+- Pages "l'atelier" et "nos savoir-faire" vides
+- Structure du menu aléatoire selon la page affichée
+
+--------------------------------------------------------------------------------------
+
+Modifications du site 15/10/25
+. section 1
+- bandeau en 4 pages A propos, l'atelier, projets, contact
+- changer les polices du titre "imprimerie" en Garamond light et "noire encrée" en open sans
+
+. section contact
+mail + adresse (7 place du champ de foire, 24800 Thiviers) + horaires (Lundi sur prise de rendez-vous / Mardi au Jeudi de 10:00-12:30, 13:30-17:00 / vendredi de 10:00-12:30, 13:30-16:00 / Samedi, Dimanche Fermée) + num de fixe (09.56.16.90.67)

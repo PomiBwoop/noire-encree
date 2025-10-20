@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noire Encrée</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    :root {
+      --text-color: #111;
+      --bg-color: #fff;
+      --accent: #000;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; font-size: 16px; }
+    section { padding: 6rem 2rem; border-top: 1px solid #eee; }
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      padding: 1rem 2rem; background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px); border-bottom: 1px solid #eee;
+      display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+    }
+    .language-switch { display: flex; gap: 1rem; }
+    .language-switch button {
+      background: none; border: none; font-weight: bold; cursor: pointer;
+      font-size: 1rem; color: var(--text-color);
+    }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a { text-decoration: none; color: var(--text-color); font-weight: 500; }
+    .hero {
+      position: relative; height: 100vh; overflow: hidden; border-top: none;
+    }
+    .background-video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -1; filter: brightness(70%);
+    }
+    .hero h1 {
+      position: relative; z-index: 1; top: 40%; transform: translateY(-50%);
+      text-align: center; color: #fff; font-size: 3.5rem; margin: 0; opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+    .hero h1.noireencree { animation-delay: 1s; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(-50%); }
+    }
+    .hero h1.imprimerie {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      letter-spacing: 2px; font-size: 7.5rem;
+    }
+    .hero h1.noireencree {
+      font-family: 'Open Sans', sans-serif; font-weight: 700;
+      margin-top: 0.5rem; letter-spacing: 3px; font-size: 9rem;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      text-align: left; font-size: 2rem; margin-bottom: 1rem;
+    }
+    #atelier h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      color: #777;
+    }
+    #atelier h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+    }
+    #atelier p {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+    #atelier > div { margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid #eee; }
+    #atelier > div:last-child { border-bottom: none; }
+    .contact-section { background-color: #000; color: #fff; text-align: center; padding: 5rem 2rem; }
+    footer { text-align: center; padding: 2rem; border-top: 1px solid #eee; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="language-switch">
+      <button onclick="window.location.href='../index.html'">FR</button>
+      <button onclick="window.location.href='index.html'">EN</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#atelier">The Workshop</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="../video/rouleaux.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+    <h1 class="imprimerie">PRINT SHOP</h1>
+    <h1 class="noireencree">NOIRE ENCRÉE</h1>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <img src="../photo/apropos1.jpeg">
+    <img src="../photo/apropos2.jpg">
+    <h3>Welcome<br/>to our workshop!</h3>
+    <p>Our goal is to offer high-quality printing services that are accessible and tailored to everyone’s needs.
+      From business cards to digital embroidery, we provide a wide range of services.
+      Each project is carried out with care, using sustainable materials and eco-friendly techniques.
+      Our values are based on proximity, attentiveness, and commitment.
+      We take pride in our work and in the satisfaction of our clients.
+      Our workshop is a place of exchange and creativity, where every request is unique and deserves special attention.</p>
+  </section>
+
+  <section id="atelier">
+    <h2>The Workshop</h2>
+
+    <div>
+      <h1>Graphic Design</h1>
+      <h4>Custom creations — simple, creative, and accessible!</h4>
+      <h4>Need a logo, poster, business card, or any type of visual? We design communication materials that reflect your style, needs, and identity.</h4>
+      <p>Our goal is to create professional, modern, and memorable visuals that enhance your business. Each project is handled with care, transparency, and creativity — from concept to final print.</p>
+    </div>
+
+    <div>
+      <h1>Printing</h1>
+      <h4>From paper to emotion — printing that leaves an impression.</h4>
+      <h4>Business cards, flyers, posters, brochures, invitations — we print everything with precision and passion.</h4>
+      <p>We use quality papers, refined finishes, and eco-responsible inks. Each print is checked to ensure perfect results, whether you need a few copies or large volumes.</p>
+    </div>
+
+    <div>
+      <h1>Embroidery & Textile</h1>
+      <h4>Bring your visuals to life on fabric!</h4>
+      <h4>From T-shirts and tote bags to workwear, we personalize all types of textiles using digital embroidery or heat transfer.</h4>
+      <p>Our embroideries combine durability and elegance. Perfect for companies, associations, or individuals who want to display their identity with style.</p>
+    </div>
+
+    <div>
+      <h1>Engraving & Signage</h1>
+      <h4>Make your brand visible — down to the smallest details.</h4>
+      <h4>Engraved signs, door plates, labels, or personalized objects — we produce precise and durable pieces.</h4>
+      <p>We work with wood, metal, plexiglass, and other materials to offer tailor-made creations that combine function and design.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Discover a selection of our creations: editorial design, visual identity, packaging, web design, and more.</p>
+    <div class="grid">
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Editorial</h3></div>
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Identity</h3></div>
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Typography</h3></div>
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Packaging</h3></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Opening Hours</h3>
+        <p>
+          Monday: by appointment<br/>
+          Tuesday – Thursday: 10:00–12:30 / 13:30–17:00<br/>
+          Friday: 10:00–12:30 / 13:30–16:00<br/>
+          Saturday, Sunday: Closed
+        </p>
+
+        <h3>Address</h3>
+        <p>7 Place du Champ de Foire<br/>24800 Thiviers, France</p>
+
+        <h3>Direct Contact</h3>
+        <p>
+          <a href="mailto:roxane@noireencree.fr">roxane@noireencree.fr</a><br/>
+          <a href="tel:0956169067">09.56.16.90.67</a>
+        </p>
+      </div>
+
+      <div class="contact-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2803.4632025036214!2d0.988031!3d45.418203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ff88c7f5d12345%3A0xabcdef!2s7%20Pl.%20du%20Champ%20de%20Foire%2C%2024800%20Thiviers!5e0!3m2!1sen!2sfr!4v0000000000000"
+          width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://www.instagram.com/imprimerie.noireencree/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/p/Noire-encr%C3%A9e-61556838602754/?locale=fr_FR" target="_blank">Facebook</a>
+      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    © NOIRE ENCRÉE Print Shop — All rights reserved. The entire content of this site, including images, text, and graphics, is protected by copyright and intellectual property laws. Any reproduction, distribution, or use without prior written permission is strictly prohibited. For any request for use or collaboration, please contact us.
+  </footer>
+
+</body>
+</html>

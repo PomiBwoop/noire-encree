@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noire Encrée</title>
+  <link rel="icon" href="photo/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root {
+      --text-color: #111;
+      --bg-color: #fff;
+      --accent: #000;
+      
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /*Menu Burger*/
+    /* ===== MENU BURGER (DROITE) ===== */
+    .burger {
+      position: absolute;
+      right: 2rem;
+      top: 1.2rem;
+      width: 32px;
+      height: 24px;
+      display: none; /* caché sur grand écran */
+      flex-direction: column;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    .burger span {
+      display: block;
+      height: 3px;
+      background: #111; /* couleur sombre mais visible sur fond clair */
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Effet croix quand actif */
+    .burger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    .burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* Menu latéral semi-transparent */
+    .burger-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.85); /* semi-transparent */
+      backdrop-filter: blur(10px); /* effet flou */
+      color: #111;
+      padding-top: 5rem;
+      transition: right 0.4s ease;
+      z-index: 2000;
+      box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .burger-menu.open {
+      right: 0;
+    }
+
+    .burger-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    .burger-menu li {
+      margin: 1.5rem 2rem;
+    }
+
+    .burger-menu a {
+      color: #111;
+      text-decoration: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .burger-menu a:hover {
+      color: #555;
+    }
+
+    /* Visible seulement sur mobile */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+      .burger {
+        display: flex;
+      }
+    }
+
+    /*Scrool pour liens d'ancrage*/
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    section {
+      padding: 6rem 2rem;
+      border-top: 1px solid #eee;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .language-switch {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .language-switch button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      border-top: none;
+    }
+
+    /* Vidéo acceuil */
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(70%);
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 5;
+      top: 25%;
+      transform: translateY(-50%);
+      text-align: center;
+      color: #fff;
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .hero h1 {
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .hero h1.noireencree {
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(-50%); }
+    }
+
+
+    /* Titre 1 : IMPRIMERIE */
+    .hero h1.imprimerie {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: 2px;
+      font-size: 7.5rem;
+    }
+
+    /* Titre 2 : NOIRE ENCRÉE */
+    .hero h1.noireencree {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      letter-spacing: 3px;
+      font-size: 9rem;
+    }
+
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding-top: 2rem;
+    }
+    /* Titres de sections */
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; /* normal */
+      text-align: left;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      color: #111; /* tu peux ajuster selon ton thème */
+    }
+    section h2 {
+      margin-top: 2rem;
+    }
+
+
+    /*A PROPOS*/
+    #apropos img {
+      max-width: 45%;
+      height: auto;
+      margin: 1rem;
+      border-radius: 6px;
+    }
+    #apropos {
+      text-align: center;
+    }
+    #apropos h3 {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    #apropos p {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .project {
+      background: #f9f9f9;
+      padding: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project .thumbnail {
+      background-size: cover;
+      background-position: center;
+      height: 200px;
+      margin-bottom: 1rem;
+    }
+
+
+    /*CONTACT*/
+    .contact-section {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .contact-section h2 {
+      font-size: 2.2rem;
+      font-family: 'Open Sans', sans-serif;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      text-align: left;
+    }
+
+    .contact-info h3 {
+      margin-top: 1.5rem;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .contact-info p {
+      font-family: 'Open Sans', sans-serif;
+      margin-top: 0.5rem;
+      line-height: 1.8;
+    }
+
+    .contact-info a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-map iframe {
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #ccc;
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #eee;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="language-switch">
+      <button onclick="window.location.href='index.html'">FR</button>
+      <button onclick="window.location.href='en/index.html'">EN</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#apropos">À PROPOS</a></li>
+        <li><a href="atelier.html">L’ATELIER</a></li>
+        <li><a href="#projets">PROJETS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+
+    <!-- MENU BURGER (DROITE) -->
+    <button class="burger" aria-label="Menu mobile">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="burger-menu">
+      <ul>
+        <li><a href="#apropos">À PROPOS</a></li>
+        <li><a href="#atelier">L’ATELIER</a></li>
+        <li><a href="#projets">PROJETS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="video/rouleaux.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+    <h1 class="imprimerie">IMPRIMERIE</h1>
+    <h1 class="noireencree">NOIRE ENCRÉE</h1>
+  </section>
+
+  <section id="apropos">
+    <h2>À PROPOS</h2>
+    <img src="photo/apropos1.jpeg">
+    <img src="photo/apropos2.jpg">
+    <h3>BIENVENUE <br/>
+      DANS NOTRE ATELIER !</h3>
+    <p>Notre objectif, offrir des services d’impression de haute qualité, accessibles et adaptés aux besoins de chacun.
+    Nous proposons une large gamme de prestations allant de la carte de visite à la broderie numérique.
+    Chaque projet est réalisé avec soin, en privilégiant des matériaux durables et des techniques respectueuses l’environnement.
+    Nos valeurs reposent sur la proximité, l’écoute et l’engagement.
+    nous somme fiers de contribuer à la satisfaction de nos client au coeur de notre travail.
+    Notre atelier se veut un lieu d’échange et de créativité, où chaque demande est unique et mérite une attention particulière.</p>
+  </section>
+
+  <section id="projets">
+    <h2>PROJETS</h2>
+    <p>Découvrez une sélection de nos réalisations : édition, identité visuelle, packaging, webdesign et plus encore.</p>
+    <div class="grid">
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Édition</h3></div>
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Identité</h3></div>
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Typographie</h3></div>
+      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Packaging</h3></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>CONTACT</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Horaires</h3>
+        <p>
+          Lundi : sur rendez-vous<br/>
+          Mardi – Jeudi : 10h00–12h30 / 13h30–17h00<br/>
+          Vendredi : 10h00–12h30 / 13h30–16h00<br/>
+          Samedi, Dimanche : Fermé
+        </p>
+
+        <h3>Adresse</h3>
+        <p>7 place du Champ de Foire<br/>24800 Thiviers</p>
+
+        <h3>Contact direct</h3>
+        <p>
+          <a href="mailto:roxane@noireencree.fr">roxane@noireencree.fr</a><br/>
+          <a href="tel:0956169067">09.56.16.90.67</a>
+        </p>
+      </div>
+
+      <div class="contact-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2803.4632025036214!2d0.988031!3d45.418203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ff88c7f5d12345%3A0xabcdef!2s7%20Pl.%20du%20Champ%20de%20Foire%2C%2024800%20Thiviers!5e0!3m2!1sfr!2sfr!4v0000000000000"
+          width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://www.instagram.com/imprimerie.noireencree/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/p/Noire-encr%C3%A9e-61556838602754/?locale=fr_FR" target="_blank">Facebook</a>
+      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+
+  <footer>
+    © IMPRIMERIE noire encrée - Tous droits réservés. L'ensemble du contenu de ce site, y compris les images, textes et graphismes, est protégé par les lois relatives aux droits d'auteur et à la propriété intellectuelle. Toute reproduction, distribution ou utilisation sans autorisation écrite préalable est strictement interdite. Pour toute demande d'utilisation ou de collaboration, veuillez nous contacter.
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.carousel img');
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    }, 5000);
+  </script>
+
+  <!-- MENU BURGER (DROITE) -->
+  <script>
+    const burger = document.querySelector('.burger');
+    const menu = document.querySelector('.burger-menu');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      menu.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

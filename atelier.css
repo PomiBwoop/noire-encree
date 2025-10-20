@@ -1,0 +1,132 @@
+:root {
+    --text-color: #111;
+    --bg-color: #fff;
+    --accent: #000;
+      
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 16px;
+}
+
+section {
+      padding: 6rem 2rem;
+      border-top: 1px solid #eee;
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; /* normal */
+    text-align: left;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: #111; /* tu peux ajuster selon ton thème */
+}
+section h2 {
+      margin-top: 1rem;
+}
+
+/*ATELIER*/
+#atelier h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+/*liste liens scroll*/
+html {
+  scroll-behavior: smooth; /* active le défilement fluide */
+}
+
+#atelier{
+    padding-top: 2rem;
+}
+#atelier h1 {
+  scroll-margin-top: 120px; /* ajuste selon la hauteur de ta barre */
+}
+
+#atelier .atelier-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+}
+
+.atelier-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.atelier-nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.atelier-nav a:hover {
+  color: #888;
+}
+
+
+/**/
+#atelier h4 {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    color: #333;
+}
+
+#atelier h1,
+#atelier h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#atelier p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+#atelier p + h4,
+#atelier p + p {
+    margin-top: 1rem;
+}
+
+#atelier h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; /* normal */
+    color: #E0E0D5; /* jaune pâle */
+    font-size: 4.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#atelier > div {
+    margin-bottom: 2.5rem; /* espace vertical entre les blocs */
+}
