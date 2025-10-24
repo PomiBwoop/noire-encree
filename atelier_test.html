@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noire ENCREE / Atelier</title>
+    <link rel="icon" href="photo/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --text-color: #111;
+            --bg-color: #fff;
+            --accent: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Bouton retour */
+        .button_retour {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+
+        .button_retour:hover {
+            background: #fff;
+        }
+
+        .button_retour a {
+            font-family: 'Open Sans', sans-serif;
+            text-decoration: none;
+            color: #111;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Section principale */
+        #atelier {
+            padding: 8rem 4rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #atelier > h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        /* Navigation sticky */
+        .atelier-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            z-index: 50;
+            margin-bottom: 4rem;
+        }
+
+        .atelier-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .atelier-nav a {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #111;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+        }
+
+        .atelier-nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Blocs de contenu */
+        #atelier > div {
+            margin-bottom: 6rem;
+            scroll-margin-top: 100px;
+        }
+
+        #atelier h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 3.5rem;
+            letter-spacing: -1px;
+            text-align: left;
+            margin-bottom: 2rem;
+            color: #111;
+        }
+
+        #atelier h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            text-align: left;
+            max-width: 900px;
+            color: #111;
+        }
+
+        #atelier h4:first-of-type {
+            margin-top: 0;
+        }
+
+        #atelier p {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            text-align: left;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #atelier {
+                padding: 6rem 2rem 2rem;
+            }
+
+            .button_retour {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            #atelier h1 {
+                font-size: 2.5rem;
+            }
+
+            #atelier h4 {
+                font-size: 1.1rem;
+            }
+
+            .atelier-nav {
+                padding: 1rem 0;
+            }
+
+            .atelier-nav ul {
+                gap: 1rem;
+            }
+
+            .atelier-nav a {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="atelier">
+        <button class="button_retour"><a href="index_test.html">← Retour</a></button>
+        
+        <h2>L'ATELIER</h2>
+        
+        <nav class="atelier-nav">
+            <ul>
+                <li><a href="#graphisme">Graphisme</a></li>
+                <li><a href="#commercial">Commercial</a></li>
+                <li><a href="#bureautique">Bureautique & Administratif</a></li>
+                <li><a href="#restauration">Restauration & Bar</a></li>
+                <li><a href="#adhesif">Adhésif</a></li>
+                <li><a href="#carterie">Carterie & Célébration</a></li>
+                <li><a href="#livres">Livres</a></li>
+                <li><a href="#panneau">Panneau rigide</a></li>
+                <li><a href="#signaletique">Signalétique</a></li>
+                <li><a href="#objet">Objet de pub</a></li>
+                <li><a href="#textile">Marquage textile</a></li>
+            </ul>
+        </nav>
+
+        <div>
+            <h1 id="graphisme">Graphisme</h1>
+            <h4>Graphisme sur mesure, simple et accessible à tous !</h4>
+            <h4>Vous avez besoin d'un logo, d'une affiche, d'une carte de visite ou d'un visuel pour vos outils de communication ?
+                Nous vous proposons un service de graphisme personnalisé, adapté à vos besoins, à votre image et à votre budget.</h4>
+            <p>Notre objectif : créer des visuels professionnels, modernes et percutants, qui mettent en valeur votre activité sans complication ni frais cachés.
+                Chaque projet est réalisé avec soin, à votre rythme, et dans un esprit d'écoute et de simplicité.
+                Que vous soyez une entreprise, une association ou un particulier, nous vous accompagnons de l'idée à la création finale, avec des tarifs clairs et abordables.
+                Faites la différence avec une identité visuelle qui vous ressemble.</p>
+        </div>
+
+        <div> 
+            <h1 id="commercial">Commercial</h1>
+            <h4>Flyers & Dépliants</h4>
+            <p>Un outil incontournable pour promouvoir vos événements, offres ou services.
+                Formats variés, finitions soignées, impression haute qualité — pour un impact maximal.</p>
+            <h4>Catalogues, Brochures & Magazines</h4>
+            <p>Présentez vos produits, vos réalisations ou votre savoir-faire de façon claire et élégante.
+                Reliure piquée, dos carré collé ou spirale — choisissez le rendu qui correspond à votre image.</p>
+            <h4>Cartes de visite & Cartes de fidélité</h4>
+            <p>Créez un lien durable avec vos clients grâce à des cartes qui vous ressemblent.
+                Classiques ou originales, avec pelliculage, vernis sélectif ou dorure à chaud.</p>
+            <h4>Cartes postales & Invitations</h4>
+            <p>Idéales pour vos campagnes, événements ou envois personnalisés.
+                Une impression nette, des couleurs éclatantes et un toucher premium.</p>
+            <h4>Affiches & Posters</h4>
+            <p>Attirez le regard et faites passer votre message en grand format !
+                Du A3 au A0, nous vous proposons des impressions adaptées à vos besoins, pour l'intérieur comme pour l'extérieur.</p>
+        </div>
+
+        <div>
+            <h1 id="bureautique">Bureautique & Administratif</h1>
+            <h4>Dossiers administratifs et chemises à rabat</h4>
+            <p>Idéals pour classer, présenter ou remettre vos documents avec soin et élégance.</p>
+            <h4>Enveloppes personnalisées</h4>
+            <p>Valorisez vos envois grâce à des enveloppes à votre image, avec votre logo et vos coordonnées.</p>
+            <h4>Papier à en-tête</h4>
+            <p>Un support essentiel pour vos correspondances et documents officiels, reflet de votre identité visuelle.</p>
+            <h4>Pochettes à rabat et chemises de présentation</h4>
+            <p>Parfaites pour vos propositions commerciales, remises de dossiers ou présentations clients.</p>
+            <h4>Wire'o, agendas et bloc-notes</h4>
+            <p>Des supports pratiques pour le bureau ou les cadeaux d'entreprise, entièrement personnalisables</p>
+            <h4>Calendriers et Post-it</h4>
+            <p>Des objets du quotidien utiles et efficaces pour assurer une visibilité continue de votre marque.</p>
+            <h4>Tampons personnalisés</h4>
+            <p>Un indispensable administratif, créé sur mesure pour vos besoins (adresse, logo, signature, etc.).</p>
+        </div>
+
+        <div>
+            <h1 id="restauration">Restauration & Bar</h1>
+            <h4>Menus</h4>
+            <p>Élégants, lisibles et résistants, nos menus sont entièrement personnalisables — formats variés, papiers de qualité, finitions haut de gamme ou plastifiées pour un usage durable.</p>
+            <h4>Sets de table</h4>
+            <p>Parfaits pour habiller vos tables tout en diffusant vos offres, votre logo ou votre identité visuelle. Pratiques, esthétiques et imprimés sur des papiers adaptés à la restauration.</p>
+            <h4>Sous-bocks</h4>
+            <p>Un support original et utile pour renforcer votre image dès la première commande. Personnalisez-les à vos couleurs pour un rendu unique.</p>
+            <h4>Chevalets de table</h4>
+            <p>Idéals pour mettre en avant vos plats du jour, formules ou boissons. Solides et élégants, ils attirent le regard tout en s'intégrant harmonieusement à votre décoration.</p>
+            <h4>Tickets personnalisés</h4>
+            <p>Tickets de caisse, bons de commande ou tickets de consommation, nous les imprimons à votre image pour une présentation soignée et cohérente.</p>
+            <h4>Plastification et finitions spéciales</h4>
+            <p>Pour une meilleure résistance à l'humidité, aux taches et à l'usure, nos impressions peuvent être plastifiées, pelliculées ou vernies selon vos besoins.</p>
+        </div>
+
+        <div>
+            <h1 id="adhesif">Adhésif</h1>
+            <h4>Adhésifs grand format</h4>
+            <p>Idéals pour vos vitrines, murs, panneaux ou véhicules. Parfaits pour capter l'attention et valoriser votre image, en intérieur comme en extérieur.</p>
+            <h4>Lettrage adhésif</h4>
+            <p>Mettez en avant votre logo, vos horaires ou vos messages promotionnels avec un lettrage précis, découpé sur mesure et facile à poser.</p>
+            <h4>Stickers personnalisés</h4>
+            <p>Un support polyvalent pour communiquer, décorer ou identifier vos produits. Disponibles dans tous les formats et finitions.</p>
+            <h4>Étiquettes en rouleaux</h4>
+            <p>Pratiques et résistantes, elles s'adaptent à tous les usages (produits alimentaires, cosmétiques, artisanaux, industriels…). Impression sur différents types de supports</p>
+            <h4>Rubans adhésifs personnalisés</h4>
+            <p>Parfaits pour sceller vos colis tout en diffusant votre image de marque. Une solution efficace pour une communication visible jusque dans vos expéditions.</p>
+            <h4>Covering véhicule</h4>
+            <p>Transformez vos voitures, utilitaires ou camions en supports publicitaires mobiles. Une impression résistante aux intempéries et aux UV, pour une communication durable.</p>
+        </div>
+
+        <div>
+            <h1 id="carterie">Carterie & Célébration</h1>
+            <h4>Faire-part de mariage</h4>
+            <p>Annoncez le plus beau jour de votre vie avec élégance.
+                Nous vous accompagnons dans la conception et l'impression de faire-part sur mesure, raffinés et harmonieux, avec un large choix de papiers, formats et finitions (dorure, gaufrage, rubans…).</p>
+            <h4>Faire-part de naissance</h4>
+            <p>Célébrez l'arrivée de votre enfant avec douceur et originalité.
+                Des modèles tendres, colorés ou minimalistes, entièrement personnalisables selon vos envies.</p>
+            <h4>Cartes de condoléances</h4>
+            <p>Exprimez votre soutien avec sobriété et respect.
+                Des cartes délicates et soignées, pensées pour transmettre vos messages avec sensibilité.</p>
+            <h4>Cartes de remerciement</h4>
+            <p>Remerciez vos proches ou vos clients avec une carte qui vous ressemble.
+                Du design classique au plus moderne, tout est possible pour refléter votre personnalité.</p>
+            <h4>Cartes d'anniversaire & Cartes de vœux</h4>
+            <p>Partagez joie et convivialité à travers des cartes uniques et pleines de vie.
+                Idéales pour les particuliers comme pour les entreprises, elles sont disponibles dans de nombreux formats et styles.</p>
+        </div>
+
+        <div>
+            <h1 id="livres">Livres</h1>
+            <h4>Dos carré collé</h4>
+            <p>Colle blanche, PUR ou Hotmelt.
+                Couvertures souples avec ou sans rabat.
+                Formats standards et atypiques.</p>
+            <h4>Dos carré cousu collé</h4>
+            <p>Couvertures souples avec ou sans rabat.
+                Formats standards et atypiques.</p>
+            <h4>Livre rembordé</h4>
+            <p>Epaisseur carton : 10/10 jusqu'au 40/10
+                Large choix de matières de recouvrement (toile, papier brut ou pelliculé, cuir...).
+                Notre spécialité le grand format à l'italienne.</p>
+            <h4>Pîqure à cheval</h4>
+            <p>Agrafes couleurs, cuivre ou argent.
+                Formats standards et atypiques.
+                Agrafage bouclette pour calendrier.</p>
+            <h4>Wire'O</h4>
+            <p>Large choix de couleurs et de tailles avec ou sans crochet.
+                Couverture souple ou rembordée, chevalet...</p>
+            <h4>Singer</h4>
+            <p>A plat ou à cheval.
+                Choix de couleurs de fil.</p>
+        </div>
+
+        <div>
+            <h1 id="panneau">Panneau rigide</h1>
+            <h4>Panneau alvéolaire</h4>
+            <p>Akilux de 3 mm à 10 mm</p>
+            <h4>Panneau PVC</h4>
+            <p>Forex de 3 mm à 10 mm</p>
+            <h4>Panneau aluminium</h4>
+            <p>Alupanel blan ou argent brossé</p>
+            <h4>Panneau transparent</h4>
+            <p>Plexiglas de 3 mm à 10 mm</p>
+            <h4>Panneau carton plume</h4>
+            <p>Kapa plast de 5mm à 10 mm</p>
+        </div>
+
+        <div>
+            <h1 id="signaletique">Signalétique</h1>
+            <h4>Roll'up</h4>
+            <h4>Oriflamm</h4>
+            <h4>Mât sur pied</h4>
+        </div>
+
+        <div>
+            <h1 id="objet">Objet de pub</h1>
+            <h4>DFT UV & transfert sublimation</h4>
+            <p>Objet surface classique ; surface sensible ; papier de transfert de sublimation</p>
+            <h4>Spécial boisson</h4>
+            <p>Bouteilles ; gobelets ; mugs et tasses ; sous bock</p>
+            <h4>Et encore plus</h4>
+            <p>Puzzle ; Tote bag ...</p>
+        </div>
+
+        <div>
+            <h1 id="textile">Marquage textile</h1>
+            <h4>Broderie numérique</h4>
+            <p>La broderie numérique est la solution idéale pour un rendu haut de gamme et une excellente tenue dans le temps. Réalisée à partir de vos fichiers numériques, elle permet de reproduire fidèlement logos, textes ou motifs sur tous types de textiles : polos, vestes, casquettes, serviettes, sacs et bien plus encore.
+                Résistante aux lavages et élégante, la broderie est particulièrement adaptée aux vêtements professionnels, textiles promotionnels et articles personnalisés.</p>
+            <h4>Transfert DFT</h4>
+            <p>Le transfert DTF est une technique innovante d'impression qui offre des couleurs vives, une grande finesse de détails et une excellente élasticité. Adaptée à la plupart des tissus (coton, polyester, nylon, etc.), elle permet de personnaliser vos t-shirts, sweats, tote bags ou vêtements de sport avec rapidité et flexibilité, même pour les petites séries.</p>
+        </div>
+    </section>
+</body>
+</html>

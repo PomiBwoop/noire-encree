@@ -42,20 +42,22 @@
     .burger span {
       display: block;
       height: 3px;
-      background: #111; /* couleur sombre mais visible sur fond clair */
+      width: 100%;
+      background-color: #111;
       border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    /* Effet croix quand actif */
     .burger.active span:nth-child(1) {
-      transform: translateY(10px) rotate(45deg);
+      transform: translateY(10.5px) rotate(45deg);
     }
+
     .burger.active span:nth-child(2) {
       opacity: 0;
     }
+
     .burger.active span:nth-child(3) {
-      transform: translateY(-10px) rotate(-45deg);
+      transform: translateY(-10.5px) rotate(-45deg);
     }
 
     /* Menu latéral semi-transparent */
@@ -103,15 +105,13 @@
     }
 
     /* Visible seulement sur mobile */
-    @media (max-width: 900px) {
-      nav ul {
-        display: none;
-      }
-      .burger {
-        display: flex;
-      }
+    header > nav {
+      display: none;
     }
 
+    .burger {
+      display: flex;
+    }
     /*Scrool pour liens d'ancrage*/
 
     html {
@@ -172,39 +172,49 @@
       font-weight: 500;
     }
 
+    /* Vidéo acceuil */
+    
     .hero {
       position: relative;
       height: 100vh;
       overflow: hidden;
-      border-top: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Vidéo acceuil */
     .background-video {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      width: 80%;
       height: 100%;
       object-fit: cover;
       z-index: -1;
       filter: brightness(70%);
     }
 
+    /* Titres centrés et lisibles */
     .hero h1 {
       position: relative;
-      z-index: 5;
-      top: 25%;
-      transform: translateY(-50%);
-      text-align: center;
       color: #fff;
-      font-size: 3rem;
+      text-align: center;
       margin: 0;
+      z-index: 2;
     }
 
-    .hero h1 {
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
+    .hero h1.imprimerie {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: 2px;
+      font-size: 7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1.noireencree {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-size: 9rem;
     }
 
     .hero h1.noireencree {
@@ -268,15 +278,20 @@
     }
     #apropos h3 {
       margin-top: 2rem;
-      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
       font-weight: bold;
+      font-style: italic;
       letter-spacing: 1px;
     }
     #apropos p {
       max-width: 800px;
-      margin: 1.5rem auto;
+      margin: 2.5rem auto;
       line-height: 1.8;
       text-align: justify;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;;
+
     }
 
     .project {
@@ -391,31 +406,30 @@
       <button onclick="window.location.href='index.html'">FR</button>
       <button onclick="window.location.href='en/index.html'">EN</button>
     </div>
+
     <nav>
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier.html">L’ATELIER</a></li>
+        <li><a href="atelier.html">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
     </nav>
 
-    <!-- MENU BURGER (DROITE) -->
     <button class="burger" aria-label="Menu mobile">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav class="burger-menu">
+    <div class="burger-menu">
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="#atelier">L’ATELIER</a></li>
+        <li><a href="atelier.html">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
-    </nav>
-
+    </div>
   </header>
 
   <section class="hero">
@@ -428,17 +442,20 @@
   </section>
 
   <section id="apropos">
+    
     <h2>À PROPOS</h2>
-    <img src="photo/apropos1.jpeg">
-    <img src="photo/apropos2.jpg">
-    <h3>BIENVENUE <br/>
-      DANS NOTRE ATELIER !</h3>
+
+    <h3>BIENVENUE <br/>DANS NOTRE ATELIER !</h3>
     <p>Notre objectif, offrir des services d’impression de haute qualité, accessibles et adaptés aux besoins de chacun.
     Nous proposons une large gamme de prestations allant de la carte de visite à la broderie numérique.
     Chaque projet est réalisé avec soin, en privilégiant des matériaux durables et des techniques respectueuses l’environnement.
     Nos valeurs reposent sur la proximité, l’écoute et l’engagement.
-    nous somme fiers de contribuer à la satisfaction de nos client au coeur de notre travail.
+    nous sommes fiers de contribuer à la satisfaction de nos clients au coeur de notre travail.
     Notre atelier se veut un lieu d’échange et de créativité, où chaque demande est unique et mérite une attention particulière.</p>
+    
+    <img src="photo/apropos1.jpeg">
+    <img src="photo/apropos2.jpg">
+    
   </section>
 
   <section id="projets">
