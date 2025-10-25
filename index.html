@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noire Encrée</title>
+  <title>Noire Encrée Test</title>
   <link rel="icon" href="photo/favicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
@@ -100,8 +100,24 @@
       transition: color 0.3s;
     }
 
-    .burger-menu a:hover {
-      color: #555;
+    /* Burger overlay */
+
+    .burger-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      z-index: 1999;
+    }
+
+    .burger-overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
 
     /* Visible seulement sur mobile */
@@ -244,13 +260,13 @@
       font-size: 9rem;
     }
 
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       padding-top: 2rem;
     }
+
     /* Titres de sections */
     h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -265,126 +281,260 @@
       margin-top: 2rem;
     }
 
-
-    /*A PROPOS*/
-    #apropos img {
-      max-width: 45%;
-      height: auto;
-      margin: 1rem;
-      border-radius: 6px;
-    }
+    /* Section À propos améliorée */
     #apropos {
-      text-align: center;
+      padding: 8rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: left;
     }
-    #apropos h3 {
-      margin-top: 2rem;
+
+    #apropos h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: bold;
-      font-style: italic;
-      letter-spacing: 1px;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
     }
+
+    #apropos h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin: 0 0 3rem 0;
+      max-width: 900px;
+    }
+
     #apropos p {
-      max-width: 800px;
-      margin: 2.5rem auto;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.1rem;
       line-height: 1.8;
       text-align: justify;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;;
+      max-width: 700px;
+      margin: 0 0 4rem 0;
+      font-weight: 400;
+    }
 
+    .apropos-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    #apropos img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    @media (max-width: 768px) {
+      #apropos {
+        padding: 4rem 2rem;
+      }
+      
+      #apropos h3 {
+        font-size: 2.5rem;
+      }
+      
+      .apropos-images {
+        grid-template-columns: 1fr;
+      }
+      
+      #apropos img {
+        height: 400px;
+      }
+    }
+    /*Projets*/
+
+    /* Section Projets améliorée */
+    #projets {
+      padding: 8rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    #projets h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    #projets > p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: left;
+      max-width: 700px;
+      margin: 0 0 4rem 0;
+      font-weight: 400;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding-top: 0;
     }
 
     .project {
-      background: #f9f9f9;
-      padding: 1rem;
-      transition: transform 0.2s;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
+      background: transparent;
+      padding: 0;
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .project .thumbnail {
       background-size: cover;
       background-position: center;
-      height: 200px;
-      margin-bottom: 1rem;
+      height: 400px;
+      margin-bottom: 1.5rem;
+      background-color: #f5f5f5;
     }
 
+    .project h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      #projets {
+        padding: 4rem 2rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project .thumbnail {
+        height: 300px;
+      }
+    }
 
     /*CONTACT*/
+    
     .contact-section {
-      background-color: #000;
+      background-color: #222;
       color: #fff;
-      text-align: center;
-      padding: 5rem 2rem;
+      padding: 8rem 4rem;
     }
 
     .contact-section h2 {
-      font-size: 2.2rem;
-      font-family: 'Open Sans', sans-serif;
-      margin-bottom: 2rem;
-      letter-spacing: 2px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 4rem;
+      text-align: left;
       color: white;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto 3rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
       text-align: left;
     }
 
     .contact-info h3 {
-      margin-top: 1.5rem;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info h3:first-child {
+      margin-top: 0;
     }
 
     .contact-info p {
       font-family: 'Open Sans', sans-serif;
-      margin-top: 0.5rem;
+      font-size: 1rem;
       line-height: 1.8;
+      font-weight: 300;
     }
 
     .contact-info a {
       color: #fff;
       text-decoration: none;
-      font-weight: 500;
-    }
-
-    .contact-info a:hover {
-      text-decoration: underline;
+      font-weight: 400;
+      transition: opacity 0.3s;
     }
 
     .contact-map iframe {
-      border-radius: 8px;
+      border-radius: 0;
       width: 100%;
+      height: 100%;
+      min-height: 400px;
     }
 
     .social-links {
       display: flex;
-      gap: 2rem;
+      gap: 3rem;
       justify-content: center;
       flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
     }
 
     .social-links a {
       color: #fff;
       text-decoration: none;
       font-family: 'Open Sans', sans-serif;
-      font-weight: bold;
+      font-weight: 400;
+      font-size: 1rem;
       letter-spacing: 1px;
-      transition: color 0.3s;
+      transition: opacity 0.3s;
     }
 
-    .social-links a:hover {
-      color: #ccc;
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 4rem 2rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .contact-map iframe {
+        min-height: 300px;
+      }
+      
+      .social-links {
+        gap: 2rem;
+      }
     }
 
+    /*FOOTER*/
 
     footer {
       text-align: center;
@@ -398,8 +548,25 @@
         display: none;
       }
     }
+
+    /* hero */
+    @media (max-width: 768px) {
+      .hero h1.imprimerie {
+        font-size: 3.5rem;
+      }
+      
+      .hero h1.noireencree {
+        font-size: 4.5rem;
+      }
+      
+      .background-video {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
+
 <body>
   <header>
     <div class="language-switch">
@@ -410,7 +577,7 @@
     <nav>
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier.html">L'ATELIER</a></li>
+        <li><a href="atelier_test.html">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
@@ -425,7 +592,7 @@
     <div class="burger-menu">
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier.html">L'ATELIER</a></li>
+        <li><a href="atelier_test.html">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
@@ -433,7 +600,8 @@
   </header>
 
   <section class="hero">
-    <video autoplay muted loop playsinline class="background-video">
+    <!-- balise video -->
+    <video autoplay muted loop playsinline preload="metadata" class="background-video">
       <source src="video/rouleaux.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la lecture vidéo.
     </video>
@@ -442,30 +610,43 @@
   </section>
 
   <section id="apropos">
-    
     <h2>À PROPOS</h2>
-
+    
     <h3>BIENVENUE <br/>DANS NOTRE ATELIER !</h3>
-    <p>Notre objectif, offrir des services d’impression de haute qualité, accessibles et adaptés aux besoins de chacun.
+    
+    <p>Notre objectif, offrir des services d'impression de haute qualité, accessibles et adaptés aux besoins de chacun.
     Nous proposons une large gamme de prestations allant de la carte de visite à la broderie numérique.
-    Chaque projet est réalisé avec soin, en privilégiant des matériaux durables et des techniques respectueuses l’environnement.
-    Nos valeurs reposent sur la proximité, l’écoute et l’engagement.
+    Chaque projet est réalisé avec soin, en privilégiant des matériaux durables et des techniques respectueuses l'environnement.
+    Nos valeurs reposent sur la proximité, l'écoute et l'engagement.
     nous sommes fiers de contribuer à la satisfaction de nos clients au coeur de notre travail.
-    Notre atelier se veut un lieu d’échange et de créativité, où chaque demande est unique et mérite une attention particulière.</p>
+    Notre atelier se veut un lieu d'échange et de créativité, où chaque demande est unique et mérite une attention particulière.</p>
     
-    <img src="photo/apropos1.jpeg">
-    <img src="photo/apropos2.jpg">
-    
+    <div class="apropos-images">
+      <img src="photo/apropos1.jpeg" alt="Atelier">
+      <img src="photo/apropos2.jpg" alt="Impression">
+    </div>
   </section>
 
   <section id="projets">
     <h2>PROJETS</h2>
     <p>Découvrez une sélection de nos réalisations : édition, identité visuelle, packaging, webdesign et plus encore.</p>
     <div class="grid">
-      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Édition</h3></div>
-      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Identité</h3></div>
-      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Typographie</h3></div>
-      <div class="project"><div class="thumbnail" style="background:#ddd;"></div><h3>Packaging</h3></div>
+      <div class="project">
+        <div class="thumbnail" style="background:#ddd;"></div>
+        <h3>Édition</h3>
+      </div>
+      <div class="project">
+        <div class="thumbnail" style="background:#ddd;"></div>
+        <h3>Identité</h3>
+      </div>
+      <div class="project">
+        <div class="thumbnail" style="background:#ddd;"></div>
+        <h3>Typographie</h3>
+      </div>
+      <div class="project">
+        <div class="thumbnail" style="background:#ddd;"></div>
+        <h3>Packaging</h3>
+      </div>
     </div>
   </section>
 
@@ -512,27 +693,127 @@
     © IMPRIMERIE noire encrée - Tous droits réservés. L'ensemble du contenu de ce site, y compris les images, textes et graphismes, est protégé par les lois relatives aux droits d'auteur et à la propriété intellectuelle. Toute reproduction, distribution ou utilisation sans autorisation écrite préalable est strictement interdite. Pour toute demande d'utilisation ou de collaboration, veuillez nous contacter.
   </footer>
 
-  <script>
-    const images = document.querySelectorAll('.carousel img');
-    let index = 0;
-
-    setInterval(() => {
-      images[index].classList.remove('active');
-      index = (index + 1) % images.length;
-      images[index].classList.add('active');
-    }, 5000);
-  </script>
 
   <!-- MENU BURGER (DROITE) -->
-  <script>
-    const burger = document.querySelector('.burger');
-    const menu = document.querySelector('.burger-menu');
+    <script>
+      const burger = document.querySelector('.burger');
+      const menu = document.querySelector('.burger-menu');
+      const overlay = document.querySelector('.burger-overlay');
+      const menuLinks = document.querySelectorAll('.burger-menu a');
 
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('active');
-      menu.classList.toggle('open');
-    });
-  </script>
+      function toggleMenu() {
+        burger.classList.toggle('active');
+        menu.classList.toggle('open');
+        overlay.classList.toggle('active');
+      }
+
+      burger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+      });
+    </script> 
+
+    <!-- Palette de couleurs élégantes et vives -->
+    <script>
+      const colors = [
+        '#d4af37', // or
+        '#c9a050', // or vieilli
+        '#cd5c5c', // terracotta
+        '#4682b4', // bleu acier
+        '#8b4789', // violet profond
+        '#2e8b57', // vert sapin
+        '#b8860b', // or foncé
+        '#dc143c', // cramoisi
+        '#ff6347', // tomate
+        '#4169e1'  // bleu royal
+      ];
+
+      // Fonction pour obtenir une couleur aléatoire
+      function getRandomColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      // Sélectionner tous les liens
+      const links = document.querySelectorAll('nav a, .burger-menu a, .atelier-nav a, .contact-info a, .social-links a');
+
+      // Appliquer l'effet hover
+      links.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+          this.style.color = getRandomColor();
+        });
+        
+        link.addEventListener('mouseleave', function() {
+          this.style.color = ''; // Retour à la couleur par défaut
+        });
+      });
+    </script>
+
+     <script>
+        // Palette de couleurs élégantes
+        const palette = ['#d4af37', '#c9a050', '#cd5c5c', '#4682b4', '#8b4789', '#2e8b57', '#b8860b', '#dc143c', '#ff6347', '#4169e1'];
+
+        function getRandomColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // 1. Hover liens avec couleur aléatoire
+        const lien = document.querySelectorAll('nav a, .burger-menu a, .atelier-nav a, .contact-info a, .social-links a');
+        links.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.color = getRandomColor();
+        });
+        link.addEventListener('mouseleave', function() {
+            this.style.color = '';
+        });
+        });
+
+        // 2. Bordures colorées aléatoires sur les thumbnails projets
+        const thumbnails = document.querySelectorAll('.project .thumbnail');
+        thumbnails.forEach(thumb => {
+        thumb.style.borderBottom = `4px solid ${getRandomColor()}`;
+        });
+
+        // 3. Accent coloré sur le bouton retour (page atelier)
+        const btnRetour = document.querySelector('.button_retour');
+        if (btnRetour) {
+        btnRetour.addEventListener('mouseenter', function() {
+            this.style.borderLeft = `4px solid ${getRandomColor()}`;
+        });
+        btnRetour.addEventListener('mouseleave', function() {
+            this.style.borderLeft = '1px solid #ddd';
+        });
+        }
+
+        // 4. Points décoratifs colorés sur les h2
+        const h2Elements = document.querySelectorAll('section h2');
+        h2Elements.forEach(h2 => {
+        const dot = document.createElement('span');
+        dot.style.cssText = `
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: ${getRandomColor()};
+            border-radius: 50%;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        `;
+        h2.appendChild(dot);
+        });
+
+        // 5. Première lettre colorée des h3 (À propos)
+        const h3Elements = document.querySelectorAll('#apropos h3');
+        h3Elements.forEach(h3 => {
+        const text = h3.innerHTML;
+        const firstLetter = text.charAt(0);
+        h3.innerHTML = `<span style="color: ${getRandomColor()}">${firstLetter}</span>${text.slice(1)}`;
+        });
+
+    </script>
+
+  
+  <div class="burger-overlay"></div>
 
 </body>
 </html>
