@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noire Encrée Test</title>
+  <title>Noire Encrée</title>
   <link rel="icon" href="photo/favicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
@@ -309,29 +309,80 @@
       max-width: 900px;
     }
 
+    /* Container pour texte + image à côté */
+    .apropos-content {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+
     #apropos p {
       font-family: 'Open Sans', sans-serif;
       font-size: 1.1rem;
       line-height: 1.8;
       text-align: justify;
       max-width: 700px;
-      margin: 0 0 4rem 0;
+      margin: 0;
       font-weight: 400;
     }
 
-    .apropos-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 4rem;
+    .apropos-content img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
     }
 
-    #apropos img {
+    /* Image centrée en dessous */
+    .apropos-image-center {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .apropos-image-center img {
       width: 100%;
       height: 500px;
       object-fit: cover;
-      margin: 0;
-      border-radius: 0;
+    }
+
+    /* Parallax sur les images */
+    #apropos img,
+    .project .thumbnail {
+      transition: transform 0.3s ease-out;
+      will-change: transform;
+    }
+
+    /* Images à propos */
+    .apropos-content img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transform-origin: center;
+    }
+
+    .apropos-image-center img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      transform-origin: center;
+    }
+
+    /* paralax */
+    /* Container pour éviter les débordements */
+    .apropos-content,
+    .apropos-image-center,
+    .project {
+      overflow: hidden;
+    }
+
+    /* Images à propos */
+    #apropos img,
+    .project .thumbnail {
+      transition: transform 0.15s ease-out;
+      will-change: transform;
     }
 
     @media (max-width: 768px) {
@@ -343,17 +394,23 @@
         font-size: 2.5rem;
       }
       
-      .apropos-images {
+      .apropos-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
       
-      #apropos img {
+      .apropos-content img {
+        height: 300px;
+      }
+      
+      .apropos-image-center img {
         height: 400px;
       }
     }
+
     /*Projets*/
 
-    /* Section Projets améliorée */
+    /* Section Projets en mosaïque */
     #projets {
       padding: 8rem 4rem;
       max-width: 1400px;
@@ -382,8 +439,9 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px;
+      gap: 1.5rem;
       padding-top: 0;
     }
 
@@ -392,23 +450,93 @@
       padding: 0;
       transition: transform 0.3s ease;
       cursor: pointer;
+      position: relative;
+    }
+
+    /* Différentes tailles de vignettes */
+    .project:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .project:nth-child(2) {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .project:nth-child(3) {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    .project:nth-child(4) {
+      grid-column: span 2;
+      grid-row: span 1;
     }
 
     .project .thumbnail {
       background-size: cover;
       background-position: center;
-      height: 400px;
-      margin-bottom: 1.5rem;
+      height: 100%;
+      width: 100%;
       background-color: #f5f5f5;
+      position: relative;
     }
 
     .project h3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      margin: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: #fff;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
       font-weight: 400;
       letter-spacing: 0.5px;
-      margin: 0;
       text-align: left;
+    }
+
+    .project .thumbnail {
+      position: relative;
+    }
+
+    .project .thumbnail::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .project:hover .thumbnail::after {
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+      
+      .project:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      
+      .project:nth-child(2),
+      .project:nth-child(3),
+      .project:nth-child(4) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
     }
 
     @media (max-width: 768px) {
@@ -418,10 +546,15 @@
       
       .grid {
         grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
       }
       
-      .project .thumbnail {
-        height: 300px;
+      .project:nth-child(1),
+      .project:nth-child(2),
+      .project:nth-child(3),
+      .project:nth-child(4) {
+        grid-column: span 1;
+        grid-row: span 1;
       }
     }
 
@@ -570,14 +703,13 @@
 <body>
   <header>
     <div class="language-switch">
-      <button onclick="window.location.href='index.html'">FR</button>
       <button onclick="window.location.href='en/index.html'">EN</button>
     </div>
 
     <nav>
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier_test.html">L'ATELIER</a></li>
+        <li><a href="atelier.html">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
@@ -592,7 +724,7 @@
     <div class="burger-menu">
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier_test.html">L'ATELIER</a></li>
+        <li><a href="atelier.html">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
@@ -614,37 +746,40 @@
     
     <h3>BIENVENUE <br/>DANS NOTRE ATELIER !</h3>
     
-    <p>Notre objectif, offrir des services d'impression de haute qualité, accessibles et adaptés aux besoins de chacun.
-    Nous proposons une large gamme de prestations allant de la carte de visite à la broderie numérique.
-    Chaque projet est réalisé avec soin, en privilégiant des matériaux durables et des techniques respectueuses l'environnement.
-    Nos valeurs reposent sur la proximité, l'écoute et l'engagement.
-    nous sommes fiers de contribuer à la satisfaction de nos clients au coeur de notre travail.
-    Notre atelier se veut un lieu d'échange et de créativité, où chaque demande est unique et mérite une attention particulière.</p>
-    
-    <div class="apropos-images">
-      <img src="photo/apropos1.jpeg" alt="Atelier">
-      <img src="photo/apropos2.jpg" alt="Impression">
+    <div class="apropos-content">
+      <p>Notre objectif, offrir des services d'impression de haute qualité, accessibles et adaptés aux besoins de chacun.
+      Nous proposons une large gamme de prestations allant de la carte de visite à la broderie numérique.
+      Chaque projet est réalisé avec soin, en privilégiant des matériaux durables et des techniques respectueuses l'environnement.
+      Nos valeurs reposent sur la proximité, l'écoute et l'engagement.
+      nous sommes fiers de contribuer à la satisfaction de nos clients au coeur de notre travail.
+      Notre atelier se veut un lieu d'échange et de créativité, où chaque demande est unique et mérite une attention particulière.</p>
+      
+      <img src="photo/img3.jpeg" alt="Atelier">
     </div>
-  </section>
+    
+    <div class="apropos-image-center">
+      <img src="photo/img4.jpeg" alt="Impression">
+    </div>
+ </section>
 
   <section id="projets">
     <h2>PROJETS</h2>
     <p>Découvrez une sélection de nos réalisations : édition, identité visuelle, packaging, webdesign et plus encore.</p>
     <div class="grid">
       <div class="project">
-        <div class="thumbnail" style="background:#ddd;"></div>
+        <div class="thumbnail" style="background-image: url('photo/apropos1.JPEG');"></div>
         <h3>Édition</h3>
       </div>
       <div class="project">
-        <div class="thumbnail" style="background:#ddd;"></div>
+        <div class="thumbnail" style="background-image: url('photo/apropos2.JPEG');"></div>
         <h3>Identité</h3>
       </div>
       <div class="project">
-        <div class="thumbnail" style="background:#ddd;"></div>
+        <div class="thumbnail" style="background-image: url('photo/img5.jpeg');"></div>
         <h3>Typographie</h3>
       </div>
       <div class="project">
-        <div class="thumbnail" style="background:#ddd;"></div>
+        <div class="thumbnail" style="background-image: url('photo/image1.jpeg');"></div>
         <h3>Packaging</h3>
       </div>
     </div>
@@ -693,8 +828,7 @@
     © IMPRIMERIE noire encrée - Tous droits réservés. L'ensemble du contenu de ce site, y compris les images, textes et graphismes, est protégé par les lois relatives aux droits d'auteur et à la propriété intellectuelle. Toute reproduction, distribution ou utilisation sans autorisation écrite préalable est strictement interdite. Pour toute demande d'utilisation ou de collaboration, veuillez nous contacter.
   </footer>
 
-
-  <!-- MENU BURGER (DROITE) -->
+    <!-- MENU BURGER (DROITE) -->
     <script>
       const burger = document.querySelector('.burger');
       const menu = document.querySelector('.burger-menu');
@@ -715,7 +849,7 @@
       });
     </script> 
 
-    <!-- Palette de couleurs élégantes et vives -->
+  <!-- Palette de couleurs élégantes et vives -->
     <script>
       const colors = [
         '#d4af37', // or
@@ -811,9 +945,99 @@
         });
 
     </script>
+    <script>
+     // Effet parallax prononcé avec mouvements variés
+      function parallaxScroll() {
+        const images = document.querySelectorAll('#apropos img, .project .thumbnail');
+        
+        images.forEach((img, index) => {
+          const rect = img.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          if (rect.top < windowHeight && rect.bottom > 0) {
+            const scrollPercent = (windowHeight - rect.top) / (windowHeight + rect.height);
+            
+            // Différents effets selon l'index de l'image
+            let translateY, scale, rotate;
+            
+            switch(index % 4) {
+              case 0: // Parallax vers le haut + zoom
+                translateY = (scrollPercent - 0.5) * -80;
+                scale = 1 + (scrollPercent * 0.1);
+                img.style.transform = `translateY(${translateY}px) scale(${scale})`;
+                break;
+                
+              case 1: // Parallax vers le bas + rotation légère
+                translateY = (scrollPercent - 0.5) * 60;
+                rotate = (scrollPercent - 0.5) * 3;
+                img.style.transform = `translateY(${translateY}px) rotate(${rotate}deg)`;
+                break;
+                
+              case 2: // Parallax inverse + zoom inverse
+                translateY = (scrollPercent - 0.5) * -100;
+                scale = 1.15 - (scrollPercent * 0.1);
+                img.style.transform = `translateY(${translateY}px) scale(${scale})`;
+                break;
+                
+              case 3: // Parallax latéral + vertical
+                translateY = (scrollPercent - 0.5) * -70;
+                const translateX = (scrollPercent - 0.5) * 20;
+                img.style.transform = `translateY(${translateY}px) translateX(${translateX}px)`;
+                break;
+            }
+          }
+        });
+      }
 
-  
-  <div class="burger-overlay"></div>
+      window.addEventListener('scroll', parallaxScroll);
+      parallaxScroll();
+    </script>
+    <script>
+            // Filtre coloré aléatoire sur projets
+      const projects = document.querySelectorAll('.project');
 
+      projects.forEach(project => {
+        const thumbnail = project.querySelector('.thumbnail');
+        
+        project.addEventListener('mouseenter', function() {
+          const color = getRandomColor();
+          const r = parseInt(color.slice(1, 3), 16);
+          const g = parseInt(color.slice(3, 5), 16);
+          const b = parseInt(color.slice(5, 7), 16);
+          
+          // Applique le filtre coloré
+          const afterEl = window.getComputedStyle(thumbnail, '::after');
+          thumbnail.style.setProperty('--filter-color', `rgba(${r}, ${g}, ${b}, 0.3)`);
+          thumbnail.querySelector('::after')?.style.setProperty('background', `rgba(${r}, ${g}, ${b}, 0.3)`);
+          
+          // Solution plus simple : créer un div overlay
+          let overlay = thumbnail.querySelector('.color-overlay');
+          if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'color-overlay';
+            overlay.style.cssText = `
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              transition: opacity 0.4s ease;
+              z-index: 1;
+            `;
+            thumbnail.appendChild(overlay);
+          }
+          overlay.style.background = `rgba(${r}, ${g}, ${b}, 0.3)`;
+          overlay.style.opacity = '1';
+        });
+        
+        project.addEventListener('mouseleave', function() {
+          const overlay = thumbnail.querySelector('.color-overlay');
+          if (overlay) {
+            overlay.style.opacity = '0';
+          }
+        });
+      });
+    </script>
 </body>
 </html>
