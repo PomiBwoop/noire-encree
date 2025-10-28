@@ -64,51 +64,86 @@
             margin: 0 auto;
         }
 
-        #atelier > h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-            text-align: left;
-        }
-
         /* Navigation sticky */
+       /* --- Navigation Atelier (version colonne) --- */
         .atelier-nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            z-index: 50;
-            margin-bottom: 4rem;
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 3rem 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        z-index: 50;
+        margin-bottom: 4rem;
+        text-align: center;
         }
 
+        /* Liste verticale */
         .atelier-nav ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            list-style: none;
-            justify-content: center;
+        display: flex;
+        flex-direction: column; /* ✅ passage en colonne */
+        align-items: center;
+        gap: 1.2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
         }
 
+        /* Liens */
         .atelier-nav a {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
-            font-size: 0.9rem;
-            text-decoration: none;
-            color: #111;
-            letter-spacing: 0.5px;
-            transition: opacity 0.3s;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 400;
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: #111;
+        letter-spacing: 1px;
+        position: relative;
+        text-transform: uppercase;
+        transition: all 0.4s ease;
+        padding: 0.25rem 0;
+        }
+
+        /* Effet hover inspiré de Imprimerie du Marais */
+        .atelier-nav a::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        width: 0;
+        height: 1px;
+        background: #111;
+        transition: width 0.3s ease, left 0.3s ease;
         }
 
         .atelier-nav a:hover {
-            opacity: 0.6;
+        color: #d4af37; /* or élégant */
+        transform: translateY(-2px);
         }
 
+        .atelier-nav a:hover::after {
+        width: 100%;
+        left: 0;
+        }
+
+        /* Responsive : retour horizontal sur mobile */
+        @media (max-width: 768px) {
+        .atelier-nav {
+            padding: 2rem 0;
+        }
+
+        .atelier-nav ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .atelier-nav a {
+            font-size: 0.9rem;
+        }
+        }
+                
+        
         /* Blocs de contenu */
         #atelier > div {
             margin-bottom: 6rem;
@@ -188,25 +223,10 @@
 
 <body>
     <section id="atelier">
-        <button class="button_retour"><a href="index.html">← Retour</a></button>
+
+        <button class="button_retour"><a href="index.html#atelier">← Retour</a></button>
         
-        <h2>L'ATELIER</h2>
         
-        <nav class="atelier-nav">
-            <ul>
-                <li><a href="#graphisme">Graphisme</a></li>
-                <li><a href="#commercial">Commercial</a></li>
-                <li><a href="#bureautique">Bureautique & Administratif</a></li>
-                <li><a href="#restauration">Restauration & Bar</a></li>
-                <li><a href="#adhesif">Adhésif</a></li>
-                <li><a href="#carterie">Carterie & Célébration</a></li>
-                <li><a href="#livres">Livres</a></li>
-                <li><a href="#panneau">Panneau rigide</a></li>
-                <li><a href="#signaletique">Signalétique</a></li>
-                <li><a href="#objet">Objet de pub</a></li>
-                <li><a href="#textile">Marquage textile</a></li>
-            </ul>
-        </nav>
 
         <div>
             <h1 id="graphisme">Graphisme</h1>
@@ -372,103 +392,26 @@
             <p>Le transfert DTF est une technique innovante d'impression qui offre des couleurs vives, une grande finesse de détails et une excellente élasticité. Adaptée à la plupart des tissus (coton, polyester, nylon, etc.), elle permet de personnaliser vos t-shirts, sweats, tote bags ou vêtements de sport avec rapidité et flexibilité, même pour les petites séries.</p>
         </div>
     </section>
+<script>
+    
+  const colors = [
+    '#d4af37', '#c9a050', '#cd5c5c', '#4682b4',
+    '#8b4789', '#2e8b57', '#b8860b', '#dc143c',
+    '#ff6347', '#4169e1'
+  ];
 
-    <!-- Palette de couleurs élégantes et vives -->
-    <script>
-      const colors = [
-        '#d4af37', // or
-        '#c9a050', // or vieilli
-        '#cd5c5c', // terracotta
-        '#4682b4', // bleu acier
-        '#8b4789', // violet profond
-        '#2e8b57', // vert sapin
-        '#b8860b', // or foncé
-        '#dc143c', // cramoisi
-        '#ff6347', // tomate
-        '#4169e1'  // bleu royal
-      ];
+  const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
 
-      // Fonction pour obtenir une couleur aléatoire
-      function getRandomColor() {
-        return colors[Math.floor(Math.random() * colors.length)];
-      }
+  // Sélectionner tous les liens concernés
+  const allLinks = document.querySelectorAll('nav a, .atelier-nav a, .contact-info a, .social-links a');
 
-      // Sélectionner tous les liens
-      const links = document.querySelectorAll('.atelier-nav a');
+  allLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => link.style.color = getRandomColor());
+    link.addEventListener('mouseleave', () => link.style.color = '');
+  });
 
-      // Appliquer l'effet hover
-      links.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-          this.style.color = getRandomColor();
-        });
-        
-        link.addEventListener('mouseleave', function() {
-          this.style.color = ''; // Retour à la couleur par défaut
-        });
-      });
-    </script>
 
-    <script>
-        // Palette de couleurs élégantes
-        const palette = ['#d4af37', '#c9a050', '#cd5c5c', '#4682b4', '#8b4789', '#2e8b57', '#b8860b', '#dc143c', '#ff6347', '#4169e1'];
-
-        function getRandomColor() {
-        return colors[Math.floor(Math.random() * colors.length)];
-        }
-
-        // 1. Hover liens avec couleur aléatoire
-        const lien = document.querySelectorAll('nav a, .burger-menu a, .atelier-nav a, .contact-info a, .social-links a');
-        links.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.color = getRandomColor();
-        });
-        link.addEventListener('mouseleave', function() {
-            this.style.color = '';
-        });
-        });
-
-        // 2. Bordures colorées aléatoires sur les thumbnails projets
-        const thumbnails = document.querySelectorAll('.project .thumbnail');
-        thumbnails.forEach(thumb => {
-        thumb.style.borderBottom = `4px solid ${getRandomColor()}`;
-        });
-
-        // 3. Accent coloré sur le bouton retour (page atelier)
-        const btnRetour = document.querySelector('.button_retour');
-        if (btnRetour) {
-        btnRetour.addEventListener('mouseenter', function() {
-            this.style.borderLeft = `4px solid ${getRandomColor()}`;
-        });
-        btnRetour.addEventListener('mouseleave', function() {
-            this.style.borderLeft = '1px solid #ddd';
-        });
-        }
-
-        // 4. Points décoratifs colorés sur les h2
-        const h2Elements = document.querySelectorAll('section h2');
-        h2Elements.forEach(h2 => {
-        const dot = document.createElement('span');
-        dot.style.cssText = `
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: ${getRandomColor()};
-            border-radius: 50%;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-        `;
-        h2.appendChild(dot);
-        });
-
-        // 5. Première lettre colorée des h3 (À propos)
-        const h3Elements = document.querySelectorAll('#apropos h3');
-        h3Elements.forEach(h3 => {
-        const text = h3.innerHTML;
-        const firstLetter = text.charAt(0);
-        h3.innerHTML = `<span style="color: ${getRandomColor()}">${firstLetter}</span>${text.slice(1)}`;
-        });
-
-    </script>
-
+</script>
+    
 </body>
 </html>

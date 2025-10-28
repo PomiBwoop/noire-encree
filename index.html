@@ -14,7 +14,6 @@
       --text-color: #111;
       --bg-color: #fff;
       --accent: #000;
-      
     }
 
     * {
@@ -101,7 +100,6 @@
     }
 
     /* Burger overlay */
-
     .burger-overlay {
       position: fixed;
       top: 0;
@@ -120,7 +118,6 @@
       visibility: visible;
     }
 
-    /* Visible seulement sur mobile */
     header > nav {
       display: none;
     }
@@ -128,6 +125,7 @@
     .burger {
       display: flex;
     }
+
     /*Scrool pour liens d'ancrage*/
 
     html {
@@ -140,11 +138,11 @@
       color: var(--text-color);
       line-height: 1.6;
       font-size: 16px;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE et Edge */
     }
-
-    section {
-      padding: 6rem 2rem;
-      border-top: 1px solid #eee;
+    body::-webkit-scrollbar {
+     display: none; /* Chrome, Safari, Opera */
     }
 
     header {
@@ -162,18 +160,14 @@
       z-index: 1000;
     }
 
-    .language-switch {
+    .icon_logo {
       display: flex;
       gap: 1rem;
-    }
-
-    .language-switch button {
       background: none;
       border: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--text-color);
+    }
+    .icon_logo img{
+      width: 15%;
     }
 
     nav ul {
@@ -190,7 +184,7 @@
 
     /* Vidéo acceuil */
     
-    .hero {
+    #hero {
       position: relative;
       height: 100vh;
       overflow: hidden;
@@ -202,83 +196,32 @@
 
     .background-video {
       position: absolute;
-      width: 80%;
+      width: 100%; /* 🔹 élargit la zone couverte */
       height: 100%;
       object-fit: cover;
       z-index: -1;
-      filter: brightness(70%);
+      filter: brightness(50%);
+      pointer-events: none;
+      transition: transform 0.3s ease;
     }
 
-    /* Titres centrés et lisibles */
-    .hero h1 {
-      position: relative;
-      color: #fff;
-      text-align: center;
+    /* hero */
+    @media (max-width: 768px) {
+      #hero img {
+        width: 50%; /* Logo plus grand sur mobile */
+      }
+      
+      .background-video {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    /* LOGO accueil*/
+    #hero img{
+      width: 28%;
       margin: 0;
-      z-index: 2;
-    }
-
-    .hero h1.imprimerie {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      letter-spacing: 2px;
-      font-size: 7rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero h1.noireencree {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 700;
-      letter-spacing: 3px;
-      font-size: 9rem;
-    }
-
-    .hero h1.noireencree {
-      animation-delay: 1s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(-50%); }
-    }
-
-
-    /* Titre 1 : IMPRIMERIE */
-    .hero h1.imprimerie {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      letter-spacing: 2px;
-      font-size: 7.5rem;
-    }
-
-    /* Titre 2 : NOIRE ENCRÉE */
-    .hero h1.noireencree {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 700;
-      margin-top: 0.5rem;
-      letter-spacing: 3px;
-      font-size: 9rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding-top: 2rem;
-    }
-
-    /* Titres de sections */
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400; /* normal */
-      text-align: left;
-      font-size: 2rem;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-      color: #111; /* tu peux ajuster selon ton thème */
-    }
-    section h2 {
-      margin-top: 2rem;
+      z-index: 10
     }
 
     /* Section À propos améliorée */
@@ -309,7 +252,7 @@
       max-width: 900px;
     }
 
-    /* Container pour texte + image à côté */
+    /* Container pour texte + image à */
     .apropos-content {
       display: grid;
       grid-template-columns: 1fr 300px;
@@ -319,13 +262,13 @@
     }
 
     #apropos p {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
       font-size: 1.1rem;
       line-height: 1.8;
-      text-align: justify;
       max-width: 700px;
       margin: 0;
-      font-weight: 400;
+      text-align: justify;
     }
 
     .apropos-content img {
@@ -408,6 +351,103 @@
       }
     }
 
+    
+   /* ---- SECTION ATELIER ---- */
+
+      #atelier {
+       padding: 8rem 4rem;
+       max-width: 1400px;
+       margin: 0 auto;
+       text-align: left;
+      }
+
+    /* titre atelier */
+      #atelier h2 {
+        font-family: 'Cormorant Garamond', serif;
+       font-size: 1rem;
+       font-weight: 400;
+       letter-spacing: 3px;
+       text-transform: uppercase;
+       margin-bottom: 3rem;
+      }
+
+      /* nav */
+      .atelier-nav {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 0; /* ajusté pour équilibre */
+        z-index: 50;
+        margin: 0 auto; /* supprime l’espace vertical parasite */
+        text-align: center;
+      }
+
+    /* Liste verticale */
+      .atelier-nav ul {
+        display: flex;
+        flex-direction: column; /* ✅ passage en colonne */
+        align-items: center;
+        gap: 0.2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Liens */
+      .atelier-nav a {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 400;
+        font-size: 2.1rem;
+        text-decoration: none;
+        color: #111;
+        letter-spacing: 2px;
+        position: relative;
+        text-transform: uppercase;
+        transition: all 0.4s ease;
+        padding: 0.25rem 0;
+      }
+
+      /* Effet hover inspiré de Imprimerie du Marais */
+      .atelier-nav a::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        width: 0;
+        height: 1px;
+        background: #111;
+        transition: width 0.3s ease, left 0.3s ease;
+      }
+
+      .atelier-nav a:hover {
+        color: #d4af37; /* or élégant */
+        transform: translateY(-2px);
+      }
+
+      .atelier-nav a:hover::after {
+        width: 100%;
+        left: 0;
+      }
+
+      /* Responsive : retour horizontal sur mobile */
+      @media (max-width: 768px) {
+        .atelier-nav {
+            padding: 2rem 0;
+      }
+
+      .atelier-nav ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+      }
+
+      .atelier-nav a {
+            font-size: 0.9rem;
+        }
+      }
+                
+
     /*Projets*/
 
     /* Section Projets en mosaïque */
@@ -415,6 +455,7 @@
       padding: 8rem 4rem;
       max-width: 1400px;
       margin: 0 auto;
+      text-align: left;
     }
 
     #projets h2 {
@@ -428,13 +469,13 @@
     }
 
     #projets > p {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
       font-size: 1.1rem;
       line-height: 1.8;
       text-align: left;
       max-width: 700px;
       margin: 0 0 4rem 0;
-      font-weight: 400;
     }
 
     .grid {
@@ -682,38 +723,16 @@
       }
     }
 
-    /* hero */
-    @media (max-width: 768px) {
-      .hero h1.imprimerie {
-        font-size: 3.5rem;
-      }
-      
-      .hero h1.noireencree {
-        font-size: 4.5rem;
-      }
-      
-      .background-video {
-        width: 100%;
-      }
-    }
-
   </style>
 </head>
 
 <body>
+  
   <header>
-    <div class="language-switch">
-      <button onclick="window.location.href='en/index.html'">EN</button>
+    <div class="icon_logo">
+      <a href="#hero"><img src="photo/favicon.png"></a>
     </div>
-
-    <nav>
-      <ul>
-        <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier.html">L'ATELIER</a></li>
-        <li><a href="#projets">PROJETS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-    </nav>
+    
 
     <button class="burger" aria-label="Menu mobile">
       <span></span>
@@ -724,24 +743,29 @@
     <div class="burger-menu">
       <ul>
         <li><a href="#apropos">À PROPOS</a></li>
-        <li><a href="atelier.html">L'ATELIER</a></li>
+        <li><a href="#atelier">L'ATELIER</a></li>
         <li><a href="#projets">PROJETS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
     </div>
+
+    <div class="burger-overlay"></div>
+
   </header>
 
-  <section class="hero">
+  <section id="hero">
     <!-- balise video -->
-    <video autoplay muted loop playsinline preload="metadata" class="background-video">
-      <source src="video/rouleaux.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="auto" class="background-video">
+      <source src="video/vid2.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la lecture vidéo.
     </video>
-    <h1 class="imprimerie">IMPRIMERIE</h1>
-    <h1 class="noireencree">NOIRE ENCRÉE</h1>
+
+    <img src="photo/logo blanc.png">
+   
   </section>
 
   <section id="apropos">
+
     <h2>À PROPOS</h2>
     
     <h3>BIENVENUE <br/>DANS NOTRE ATELIER !</h3>
@@ -760,10 +784,34 @@
     <div class="apropos-image-center">
       <img src="photo/img4.jpeg" alt="Impression">
     </div>
- </section>
+  </section>
+
+  <section id="atelier">
+
+    <h2>L'ATELIER</h2>
+
+    <nav class="atelier-nav">
+      <ul>
+        <li><a href="atelier.html#graphisme">Graphisme</a></li>
+        <li><a href="atelier.html#commercial">Commercial</a></li>
+        <li><a href="atelier.html#bureautique">Bureautique & Administratif</a></li>
+        <li><a href="atelier.html#restauration">Restauration & Bar</a></li>
+        <li><a href="atelier.html#adhesif">Adhésif</a></li>
+        <li><a href="atelier.html#carterie">Carterie & Célébration</a></li>
+        <li><a href="atelier.html#livres">Livres</a></li>
+        <li><a href="atelier.html#panneau">Panneau rigide</a></li>
+        <li><a href="atelier.html#signaletique">Signalétique</a></li>
+        <li><a href="atelier.html#objet">Objet de pub</a></li>
+        <li><a href="atelier.html#textile">Marquage textile</a></li>
+      </ul>
+    </nav>
+  </section>
+
 
   <section id="projets">
+
     <h2>PROJETS</h2>
+
     <p>Découvrez une sélection de nos réalisations : édition, identité visuelle, packaging, webdesign et plus encore.</p>
     <div class="grid">
       <div class="project">
@@ -771,7 +819,7 @@
         <h3>Édition</h3>
       </div>
       <div class="project">
-        <div class="thumbnail" style="background-image: url('photo/apropos2.JPEG');"></div>
+        <div class="thumbnail" style="background-image: url('photo/apropos2.JPG');"></div>
         <h3>Identité</h3>
       </div>
       <div class="project">
@@ -786,6 +834,7 @@
   </section>
 
   <section id="contact" class="contact-section">
+
     <h2>CONTACT</h2>
 
     <div class="contact-grid">
@@ -884,7 +933,7 @@
       });
     </script>
 
-     <script>
+    <script>
         // Palette de couleurs élégantes
         const palette = ['#d4af37', '#c9a050', '#cd5c5c', '#4682b4', '#8b4789', '#2e8b57', '#b8860b', '#dc143c', '#ff6347', '#4169e1'];
 
@@ -902,49 +951,8 @@
             this.style.color = '';
         });
         });
-
-        // 2. Bordures colorées aléatoires sur les thumbnails projets
-        const thumbnails = document.querySelectorAll('.project .thumbnail');
-        thumbnails.forEach(thumb => {
-        thumb.style.borderBottom = `4px solid ${getRandomColor()}`;
-        });
-
-        // 3. Accent coloré sur le bouton retour (page atelier)
-        const btnRetour = document.querySelector('.button_retour');
-        if (btnRetour) {
-        btnRetour.addEventListener('mouseenter', function() {
-            this.style.borderLeft = `4px solid ${getRandomColor()}`;
-        });
-        btnRetour.addEventListener('mouseleave', function() {
-            this.style.borderLeft = '1px solid #ddd';
-        });
-        }
-
-        // 4. Points décoratifs colorés sur les h2
-        const h2Elements = document.querySelectorAll('section h2');
-        h2Elements.forEach(h2 => {
-        const dot = document.createElement('span');
-        dot.style.cssText = `
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: ${getRandomColor()};
-            border-radius: 50%;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-        `;
-        h2.appendChild(dot);
-        });
-
-        // 5. Première lettre colorée des h3 (À propos)
-        const h3Elements = document.querySelectorAll('#apropos h3');
-        h3Elements.forEach(h3 => {
-        const text = h3.innerHTML;
-        const firstLetter = text.charAt(0);
-        h3.innerHTML = `<span style="color: ${getRandomColor()}">${firstLetter}</span>${text.slice(1)}`;
-        });
-
     </script>
+
     <script>
      // Effet parallax prononcé avec mouvements variés
       function parallaxScroll() {
@@ -989,55 +997,9 @@
         });
       }
 
-      window.addEventListener('scroll', parallaxScroll);
-      parallaxScroll();
-    </script>
-    <script>
-            // Filtre coloré aléatoire sur projets
-      const projects = document.querySelectorAll('.project');
+     window.addEventListener('scroll', parallaxScroll);
+     parallaxScroll();
 
-      projects.forEach(project => {
-        const thumbnail = project.querySelector('.thumbnail');
-        
-        project.addEventListener('mouseenter', function() {
-          const color = getRandomColor();
-          const r = parseInt(color.slice(1, 3), 16);
-          const g = parseInt(color.slice(3, 5), 16);
-          const b = parseInt(color.slice(5, 7), 16);
-          
-          // Applique le filtre coloré
-          const afterEl = window.getComputedStyle(thumbnail, '::after');
-          thumbnail.style.setProperty('--filter-color', `rgba(${r}, ${g}, ${b}, 0.3)`);
-          thumbnail.querySelector('::after')?.style.setProperty('background', `rgba(${r}, ${g}, ${b}, 0.3)`);
-          
-          // Solution plus simple : créer un div overlay
-          let overlay = thumbnail.querySelector('.color-overlay');
-          if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.className = 'color-overlay';
-            overlay.style.cssText = `
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              pointer-events: none;
-              transition: opacity 0.4s ease;
-              z-index: 1;
-            `;
-            thumbnail.appendChild(overlay);
-          }
-          overlay.style.background = `rgba(${r}, ${g}, ${b}, 0.3)`;
-          overlay.style.opacity = '1';
-        });
-        
-        project.addEventListener('mouseleave', function() {
-          const overlay = thumbnail.querySelector('.color-overlay');
-          if (overlay) {
-            overlay.style.opacity = '0';
-          }
-        });
-      });
     </script>
 </body>
 </html>
